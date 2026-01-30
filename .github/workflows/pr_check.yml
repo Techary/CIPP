@@ -59,4 +59,4 @@ jobs:
               ...context.repo,
               pull_number: context.issue.number,
               state: 'closed'
-            });
+            }); 
