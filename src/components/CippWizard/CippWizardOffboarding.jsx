@@ -358,7 +358,7 @@ export const CippWizardOffboarding = (props) => {
               compareType="is"
               compareValue={true}
             >
-              <Grid size={{ sm: 6, xs: 12 }}>
+              <Grid size={{ sm: 12, xs: 12 }}>
                 <Typography variant="subtitle2">Scheduled Offboarding Date</Typography>
                 <CippFormComponent
                   name="Scheduled.date"
@@ -367,27 +367,28 @@ export const CippWizardOffboarding = (props) => {
                   fullWidth
                 />
               </Grid>
+            </CippFormCondition>
 
-              <Grid size={{ sm: 6, xs: 12 }}>
-                <Typography variant="subtitle2">Send results to:</Typography>
-                <CippFormComponent
-                  name="postExecution.webhook"
-                  label="Webhook"
-                  type="switch"
-                  formControl={formControl}
-                />
-                <CippFormComponent
-                  name="postExecution.email"
-                  label="E-mail"
-                  type="switch"
-                  formControl={formControl}
-                />
-                <CippFormComponent
-                  name="postExecution.psa"
-                  label="PSA"
-                  type="switch"
-                  formControl={formControl}
-                />
+            <Grid size={{ sm: 12, xs: 12 }}>
+              <Typography variant="subtitle2">Send results to:</Typography>
+              <CippFormComponent
+                name="postExecution.webhook"
+                label="Webhook"
+                type="switch"
+                formControl={formControl}
+              />
+              <CippFormComponent
+                name="postExecution.email"
+                label="E-mail"
+                type="switch"
+                formControl={formControl}
+              />
+              <CippFormComponent
+                name="postExecution.psa"
+                label="PSA"
+                type="switch"
+                formControl={formControl}
+              />
 
                 <CippFormCondition
                   formControl={formControl}
@@ -409,19 +410,18 @@ export const CippWizardOffboarding = (props) => {
                     />
                   </Grid>
                 </CippFormCondition>
-              </Grid>
+            </Grid>
 
-              <Grid size={{ sm: 12, xs: 12 }}>
-                <CippFormComponent
-                  type="textField"
-                  fullWidth
-                  label="Reference"
-                  name="reference"
-                  placeholder="Enter a reference that will be added to the notification title and scheduled task"
-                  formControl={formControl}
-                />
-              </Grid>
-            </CippFormCondition>
+            <Grid size={{ sm: 12, xs: 12 }}>
+              <CippFormComponent
+                type="textField"
+                fullWidth
+                label="Reference"
+                name="reference"
+                placeholder="Enter a reference that will be added to the notification title and scheduled task"
+                formControl={formControl}
+              />
+            </Grid>
           </Grid>
         </CardContent>
       </Card>
