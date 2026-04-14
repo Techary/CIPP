@@ -643,6 +643,128 @@
     "showSyncButton": true
   },
   {
+    "name": "ITGlue",
+    "id": "ITGlue",
+    "type": "ITGlue",
+    "cat": "Documentation",
+    "logo": "/assets/integrations/itglue.png",
+    "logoDark": "/assets/integrations/itglue_dark.png",
+    "forceSyncButton": true,
+    "description": "Enable the ITGlue integration to sync M365 documentation",
+    "helpText": "This integration populates Flexible Assets, native Contacts, and native Configurations in ITGlue with Microsoft 365 tenant data including users, devices, domains, licenses, and mailboxes. Map your tenants to ITGlue organisations and optionally map Flexible Asset Types for rich M365 content.",
+    "links": [
+      {
+        "name": "ITGlue API Documentation",
+        "url": "https://api.itglue.com/developer"
+      }
+    ],
+    "SettingOptions": [
+      {
+        "type": "switch",
+        "name": "ITGlue.Enabled",
+        "label": "Enable Integration"
+      },
+      {
+        "type": "select",
+        "name": "ITGlue.Region",
+        "label": "ITGlue Region",
+        "options": [
+          { "label": "US (api.itglue.com)", "value": "api.itglue.com" },
+          { "label": "EU (api.eu.itglue.com)", "value": "api.eu.itglue.com" }
+        ],
+        "condition": {
+          "field": "ITGlue.Enabled",
+          "compareType": "is",
+          "compareValue": true,
+          "action": "disable"
+        }
+      },
+      {
+        "type": "password",
+        "name": "ITGlue.APIKey",
+        "label": "ITGlue API Key",
+        "placeholder": "Enter your ITGlue API Key",
+        "required": true,
+        "condition": {
+          "field": "ITGlue.Enabled",
+          "compareType": "is",
+          "compareValue": true,
+          "action": "disable"
+        }
+      },
+      {
+        "type": "switch",
+        "name": "ITGlue.CreateMissingContacts",
+        "label": "Create or update users as native ITGlue Contacts",
+        "condition": {
+          "field": "ITGlue.Enabled",
+          "compareType": "is",
+          "compareValue": true,
+          "action": "disable"
+        }
+      },
+      {
+        "type": "switch",
+        "name": "ITGlue.CreateMissingConfigurations",
+        "label": "Create or update devices as native ITGlue Configurations",
+        "condition": {
+          "field": "ITGlue.Enabled",
+          "compareType": "is",
+          "compareValue": true,
+          "action": "disable"
+        }
+      },
+      {
+        "type": "switch",
+        "name": "ITGlue.SyncConditionalAccessPolicies",
+        "label": "Sync Conditional Access Policies to Flexible Assets",
+        "condition": {
+          "field": "ITGlue.Enabled",
+          "compareType": "is",
+          "compareValue": true,
+          "action": "disable"
+        }
+      },
+      {
+        "type": "textField",
+        "name": "ITGlue.ExcludeSerials",
+        "label": "Exclude device serials (comma separated)",
+        "condition": {
+          "field": "ITGlue.Enabled",
+          "compareType": "is",
+          "compareValue": true,
+          "action": "disable"
+        }
+      },
+      {
+        "type": "switch",
+        "name": "ITGlue.ImportDomains",
+        "label": "Import domains and license summary into organisation Quick Notes",
+        "condition": {
+          "field": "ITGlue.Enabled",
+          "compareType": "is",
+          "compareValue": true,
+          "action": "disable"
+        }
+      },
+      {
+        "type": "datePicker",
+        "name": "ITGlue.NextSync",
+        "label": "Reschedule next sync date",
+        "helperText": "Set a future date to delay the next scheduled sync. Leave blank to sync during the next scheduled window.",
+        "condition": {
+          "field": "ITGlue.Enabled",
+          "compareType": "is",
+          "compareValue": true,
+          "action": "disable"
+        }
+      }
+    ],
+    "mappingRequired": true,
+    "fieldMapping": true,
+    "showSyncButton": true
+  },
+  {
     "name": "PasswordPusher",
     "id": "PWPush",
     "type": "PWPush",

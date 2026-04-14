@@ -208,6 +208,11 @@ export const CippApplicationDeployDrawer = ({
                     label: "CW Command",
                     isSponsor: false,
                   },
+                  {
+                    value: "NCentral",
+                    label: "N-able N-Central",
+                    isSponsor: false,
+                  },
                 ]}
                 formControl={formControl}
                 multiple={false}
@@ -370,6 +375,74 @@ export const CippApplicationDeployDrawer = ({
                     name={`params.ClientURL.${tenant.addedFields.customerId}`}
                     formControl={formControl}
                     validators={{ required: `Client URL for ${tenant.label} is required` }}
+                  />
+                </Grid>
+              ))}
+            </CippFormCondition>
+
+            {/* For "NCentral" */}
+            <CippFormCondition
+              formControl={formControl}
+              field="rmmname.value"
+              compareType="is"
+              compareValue="NCentral"
+            >
+              <Grid size={{ md: 6, xs: 12 }}>
+                <CippFormComponent
+                  type="textField"
+                  label="N-Central Server Address (e.g., ncentral.yourdomain.com)"
+                  name="params.ServerAddress"
+                  formControl={formControl}
+                  validators={{ required: "Server Address is required" }}
+                />
+              </Grid>
+              <Grid size={{ md: 6, xs: 12 }}>
+                <CippFormComponent
+                  type="textField"
+                  label="Server Port (default: 443)"
+                  name="params.ServerPort"
+                  formControl={formControl}
+                  defaultValue="443"
+                />
+              </Grid>
+              {selectedTenants?.map((tenant, index) => (
+                <Grid size={{ md: 6, xs: 12 }} key={tenant.addedFields.customerId || index}>
+                  <CippFormComponent
+                    type="textField"
+                    label={`Customer ID for ${tenant.label}`}
+                    name={`params.CustomerID.${tenant.addedFields.customerId}`}
+                    formControl={formControl}
+                    validators={{ required: `Customer ID for ${tenant.label} is required` }}
+                  />
+                </Grid>
+              ))}
+              {selectedTenants?.map((tenant, index) => (
+                <Grid
+                  size={{ md: 6, xs: 12 }}
+                  key={`${tenant.addedFields.customerId}_name_${index}`}
+                >
+                  <CippFormComponent
+                    type="textField"
+                    label={`Customer Name for ${tenant.label}`}
+                    name={`params.CustomerName.${tenant.addedFields.customerId}`}
+                    formControl={formControl}
+                    validators={{ required: `Customer Name for ${tenant.label} is required` }}
+                  />
+                </Grid>
+              ))}
+              {selectedTenants?.map((tenant, index) => (
+                <Grid
+                  size={{ md: 6, xs: 12 }}
+                  key={`${tenant.addedFields.customerId}_token_${index}`}
+                >
+                  <CippFormComponent
+                    type="textField"
+                    label={`Registration Token for ${tenant.label}`}
+                    name={`params.RegistrationToken.${tenant.addedFields.customerId}`}
+                    formControl={formControl}
+                    validators={{
+                      required: `Registration Token for ${tenant.label} is required`,
+                    }}
                   />
                 </Grid>
               ))}
