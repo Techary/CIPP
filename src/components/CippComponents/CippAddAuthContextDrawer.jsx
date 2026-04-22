@@ -10,6 +10,11 @@ import { useSettings } from "../../hooks/use-settings";
 import { ApiGetCall, ApiPostCall } from "../../api/ApiCall";
 
 const AUTH_CONTEXT_ENDPOINT = "identity/conditionalAccess/authenticationContextClassReferences";
+// Spec (https://learn.microsoft.com/en-us/graph/api/resources/authenticationcontextclassreference?view=graph-rest-1.0) says c1 > c25, Entra shows 1-199.
+// I'm going to keep in line with the spec but if YOU want to expand, update all three in unison:
+//   - this constant (length)
+//   - CIPP-API/.../Invoke-ExecAuthenticationContext.ps1 (id regex)
+//   - CIPP-API/.../Invoke-ExecRoleAuthContext.ps1 (claimValue regex)
 const ALL_IDS = Array.from({ length: 25 }, (_, i) => `c${i + 1}`);
 
 const defaultValues = {
