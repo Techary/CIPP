@@ -37,6 +37,16 @@ const Page = () => {
       type: 'column',
     },
     {
+      filterName: 'Accepted Deviation',
+      value: [{ id: 'complianceStatus', value: 'Accepted Deviation' }],
+      type: 'column',
+    },
+    {
+      filterName: 'Customer Specific',
+      value: [{ id: 'complianceStatus', value: 'Customer Specific' }],
+      type: 'column',
+    },
+    {
       filterName: 'License Missing',
       value: [{ id: 'complianceStatus', value: 'License Missing' }],
       type: 'column',
@@ -171,6 +181,8 @@ const Page = () => {
       const complianceColors = {
         compliant: 'success',
         'non-compliant': 'error',
+        'accepted deviation': 'info',
+        'customer specific': 'info',
         'license missing': 'warning',
         'reporting disabled': 'default',
       }
@@ -470,6 +482,7 @@ const Page = () => {
               'alignmentScore',
               'LicenseMissingPercentage',
               'combinedAlignmentScore',
+              'currentDeviationsCount',
             ]
       }
       queryKey={granular ? 'listTenantAlignment-granular' : 'listTenantAlignment'}
