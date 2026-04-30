@@ -183,47 +183,47 @@ const Page = () => {
   const portalLinksConfig = [
     {
       name: "portalLinks.M365_Portal",
-      label: "M365",
+      label: "M365 Portal",
     },
     {
       name: "portalLinks.Exchange_Portal",
-      label: "Exchange",
+      label: "Exchange Portal",
     },
     {
       name: "portalLinks.Entra_Portal",
-      label: "Entra",
+      label: "Entra Portal",
     },
     {
       name: "portalLinks.Teams_Portal",
-      label: "Teams",
+      label: "Teams Portal",
     },
     {
       name: "portalLinks.Azure_Portal",
-      label: "Azure",
+      label: "Azure Portal",
     },
     {
       name: "portalLinks.Intune_Portal",
-      label: "Intune",
+      label: "Intune Portal",
     },
     {
       name: "portalLinks.SharePoint_Admin",
-      label: "SharePoint",
+      label: "SharePoint Admin",
     },
     {
       name: "portalLinks.Security_Portal",
-      label: "Security",
+      label: "Security Portal",
     },
     {
       name: "portalLinks.Compliance_Portal",
-      label: "Compliance",
+      label: "Compliance Portal",
     },
     {
       name: "portalLinks.Power_Platform_Portal",
-      label: "Power Platform",
+      label: "Power Platform Portal",
     },
     {
       name: "portalLinks.Power_BI_Portal",
-      label: "Power BI",
+      label: "Power BI Portal",
     },
   ];
 

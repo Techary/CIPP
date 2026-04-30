@@ -1,6 +1,6 @@
-import { Layout as DashboardLayout } from '../../../layouts/index.js'
-import { CippTablePage } from '../../../components/CippComponents/CippTablePage.jsx'
-import { Button } from '@mui/material'
+import { Layout as DashboardLayout } from "../../../layouts/index.js";
+import { CippTablePage } from "../../../components/CippComponents/CippTablePage.jsx";
+import { Button } from "@mui/material";
 import {
   Add,
   AddToPhotos,
@@ -9,6 +9,7 @@ import {
   AdminPanelSettings,
   NoAccounts,
   Delete,
+<<<<<<< HEAD
   Lock,
   LockOpen,
 } from '@mui/icons-material'
@@ -58,53 +59,51 @@ const SiteAuthContextCard = ({ webUrl, tenantFilter }) => {
     />
   )
 }
+=======
+} from "@mui/icons-material";
+import Link from "next/link";
+import { CippDataTable } from "../../../components/CippTable/CippDataTable";
+import { useSettings } from "../../../hooks/use-settings";
+>>>>>>> parent of b87296a68 (Squashed commit of the following:)
 
 const Page = () => {
-  const pageTitle = 'SharePoint Sites'
-  const tenantFilter = useSettings().currentTenant
-  const reportDB = useCippReportDB({
-    apiUrl: '/api/ListSites?type=SharePointSiteUsage',
-    queryKey: 'ListSites-SharePointSiteUsage',
-    cacheName: 'SharePointSiteUsage',
-    syncTitle: 'Sync SharePoint Site Usage',
-    allowToggle: true,
-    defaultCached: false,
-  })
+  const pageTitle = "SharePoint Sites";
+  const tenantFilter = useSettings().currentTenant;
 
   const actions = [
     {
-      label: 'Add Member',
-      type: 'POST',
+      label: "Add Member",
+      type: "POST",
       icon: <PersonAdd />,
-      url: '/api/ExecSetSharePointMember',
+      url: "/api/ExecSetSharePointMember",
       data: {
-        groupId: 'ownerPrincipalName',
+        groupId: "ownerPrincipalName",
         add: true,
-        URL: 'webUrl',
-        SharePointType: 'rootWebTemplate',
+        URL: "webUrl",
+        SharePointType: "rootWebTemplate",
       },
-      confirmText: 'Select the User to add as a member.',
+      confirmText: "Select the User to add as a member.",
       fields: [
         {
-          type: 'autoComplete',
-          name: 'user',
-          label: 'Select User',
+          type: "autoComplete",
+          name: "user",
+          label: "Select User",
           multiple: false,
           creatable: false,
           api: {
-            url: '/api/ListGraphRequest',
+            url: "/api/ListGraphRequest",
             data: {
-              Endpoint: 'users',
-              $select: 'id,displayName,userPrincipalName',
+              Endpoint: "users",
+              $select: "id,displayName,userPrincipalName",
               $top: 999,
               $count: true,
             },
-            queryKey: 'ListUsersAutoComplete',
-            dataKey: 'Results',
+            queryKey: "ListUsersAutoComplete",
+            dataKey: "Results",
             labelField: (user) => `${user.displayName} (${user.userPrincipalName})`,
-            valueField: 'userPrincipalName',
+            valueField: "userPrincipalName",
             addedField: {
-              id: 'id',
+              id: "id",
             },
             showRefresh: true,
           },
@@ -113,38 +112,38 @@ const Page = () => {
       multiPost: false,
     },
     {
-      label: 'Remove Member',
-      type: 'POST',
+      label: "Remove Member",
+      type: "POST",
       icon: <PersonRemove />,
-      url: '/api/ExecSetSharePointMember',
+      url: "/api/ExecSetSharePointMember",
       data: {
-        groupId: 'ownerPrincipalName',
+        groupId: "ownerPrincipalName",
         add: false,
-        URL: 'URL',
-        SharePointType: 'rootWebTemplate',
+        URL: "URL",
+        SharePointType: "rootWebTemplate",
       },
-      confirmText: 'Select the User to remove as a member.',
+      confirmText: "Select the User to remove as a member.",
       fields: [
         {
-          type: 'autoComplete',
-          name: 'user',
-          label: 'Select User',
+          type: "autoComplete",
+          name: "user",
+          label: "Select User",
           multiple: false,
           creatable: false,
           api: {
-            url: '/api/ListGraphRequest',
+            url: "/api/ListGraphRequest",
             data: {
-              Endpoint: 'users',
-              $select: 'id,displayName,userPrincipalName',
+              Endpoint: "users",
+              $select: "id,displayName,userPrincipalName",
               $top: 999,
               $count: true,
             },
-            queryKey: 'ListUsersAutoComplete',
-            dataKey: 'Results',
+            queryKey: "ListUsersAutoComplete",
+            dataKey: "Results",
             labelField: (user) => `${user.displayName} (${user.userPrincipalName})`,
-            valueField: 'userPrincipalName',
+            valueField: "userPrincipalName",
             addedField: {
-              id: 'id',
+              id: "id",
             },
             showRefresh: true,
           },
@@ -153,37 +152,37 @@ const Page = () => {
       multiPost: false,
     },
     {
-      label: 'Add Site Admin',
-      type: 'POST',
+      label: "Add Site Admin",
+      type: "POST",
       icon: <AdminPanelSettings />,
-      url: '/api/ExecSharePointPerms',
+      url: "/api/ExecSharePointPerms",
       data: {
-        UPN: 'ownerPrincipalName',
+        UPN: "ownerPrincipalName",
         RemovePermission: false,
-        URL: 'webUrl',
+        URL: "webUrl",
       },
-      confirmText: 'Select the User to add to the Site Admins permissions',
+      confirmText: "Select the User to add to the Site Admins permissions",
       fields: [
         {
-          type: 'autoComplete',
-          name: 'user',
-          label: 'Select User',
+          type: "autoComplete",
+          name: "user",
+          label: "Select User",
           multiple: false,
           creatable: false,
           api: {
-            url: '/api/ListGraphRequest',
+            url: "/api/ListGraphRequest",
             data: {
-              Endpoint: 'users',
-              $select: 'id,displayName,userPrincipalName',
+              Endpoint: "users",
+              $select: "id,displayName,userPrincipalName",
               $top: 999,
               $count: true,
             },
-            queryKey: 'ListUsersAutoComplete',
-            dataKey: 'Results',
+            queryKey: "ListUsersAutoComplete",
+            dataKey: "Results",
             labelField: (user) => `${user.displayName} (${user.userPrincipalName})`,
-            valueField: 'userPrincipalName',
+            valueField: "userPrincipalName",
             addedField: {
-              id: 'id',
+              id: "id",
             },
             showRefresh: true,
           },
@@ -192,37 +191,37 @@ const Page = () => {
       multiPost: false,
     },
     {
-      label: 'Remove Site Admin',
-      type: 'POST',
+      label: "Remove Site Admin",
+      type: "POST",
       icon: <NoAccounts />,
-      url: '/api/ExecSharePointPerms',
+      url: "/api/ExecSharePointPerms",
       data: {
-        UPN: 'ownerPrincipalName',
+        UPN: "ownerPrincipalName",
         RemovePermission: true,
-        URL: 'webUrl',
+        URL: "webUrl",
       },
-      confirmText: 'Select the User to remove from the Site Admins permissions',
+      confirmText: "Select the User to remove from the Site Admins permissions",
       fields: [
         {
-          type: 'autoComplete',
-          name: 'user',
-          label: 'Select User',
+          type: "autoComplete",
+          name: "user",
+          label: "Select User",
           multiple: false,
           creatable: false,
           api: {
-            url: '/api/ListGraphRequest',
+            url: "/api/ListGraphRequest",
             data: {
-              Endpoint: 'users',
-              $select: 'id,displayName,userPrincipalName',
+              Endpoint: "users",
+              $select: "id,displayName,userPrincipalName",
               $top: 999,
               $count: true,
             },
-            queryKey: 'ListUsersAutoComplete',
-            dataKey: 'Results',
+            queryKey: "ListUsersAutoComplete",
+            dataKey: "Results",
             labelField: (user) => `${user.displayName} (${user.userPrincipalName})`,
-            valueField: 'userPrincipalName',
+            valueField: "userPrincipalName",
             addedField: {
-              id: 'id',
+              id: "id",
             },
             showRefresh: true,
           },
@@ -231,6 +230,7 @@ const Page = () => {
       multiPost: false,
     },
     {
+<<<<<<< HEAD
       label: 'Set Authentication Context',
       type: 'POST',
       icon: <Lock />,
@@ -285,22 +285,26 @@ const Page = () => {
     {
       label: 'Delete Site',
       type: 'POST',
+=======
+      label: "Delete Site",
+      type: "POST",
+>>>>>>> parent of b87296a68 (Squashed commit of the following:)
       icon: <Delete />,
-      url: '/api/DeleteSharepointSite',
+      url: "/api/DeleteSharepointSite",
       data: {
-        SiteId: 'siteId',
+        SiteId: "siteId",
       },
-      confirmText:
-        'Are you sure you want to delete this SharePoint site? This action cannot be undone.',
-      color: 'error',
+      confirmText: "Are you sure you want to delete this SharePoint site? This action cannot be undone.",
+      color: "error",
       multiPost: false,
     },
-  ]
+  ];
 
   const offCanvas = {
-    extendedInfoFields: ['displayName', 'description', 'webUrl'],
+    extendedInfoFields: ["displayName", "description", "webUrl"],
     actions: actions,
     children: (row) => (
+<<<<<<< HEAD
       <Stack spacing={2}>
         <SiteAuthContextCard webUrl={row.webUrl} tenantFilter={tenantFilter} />
         <CippDataTable
@@ -317,57 +321,60 @@ const Page = () => {
           simpleColumns={['fields.Title', 'fields.EMail', 'fields.IsSiteAdmin']}
         />
       </Stack>
+=======
+      <CippDataTable
+        title="Site Members"
+        queryKey={`site-members-${row.siteId}`}
+        api={{
+          url: "/api/ListSiteMembers",
+          data: {
+            SiteId: row.siteId,
+            tenantFilter: tenantFilter,
+          },
+          dataKey: "Results",
+        }}
+        simpleColumns={["fields.Title", "fields.EMail", "fields.IsSiteAdmin"]}
+      />
+>>>>>>> parent of b87296a68 (Squashed commit of the following:)
     ),
-    size: 'lg', // Make the offcanvas extra large
-  }
-
-  const simpleColumns = [
-    ...reportDB.cacheColumns.filter((c) => c === 'Tenant'),
-    'displayName',
-    'createdDateTime',
-    'ownerPrincipalName',
-    'lastActivityDate',
-    'fileCount',
-    'storageUsedInGigabytes',
-    'storageAllocatedInGigabytes',
-    'reportRefreshDate',
-    'webUrl',
-    ...reportDB.cacheColumns.filter((c) => c !== 'Tenant'),
-  ]
-
-  const pageActions = (
-    <Stack direction="row" spacing={1} alignItems="center">
-      <Button component={Link} href="/teams-share/sharepoint/add-site" startIcon={<Add />}>
-        Add Site
-      </Button>
-      <Button
-        component={Link}
-        href="/teams-share/sharepoint/bulk-add-site"
-        startIcon={<AddToPhotos />}
-      >
-        Bulk Add Sites
-      </Button>
-      {reportDB.controls}
-    </Stack>
-  )
+    size: "lg", // Make the offcanvas extra large
+  };
 
   return (
-    <>
-      <CippTablePage
-        title={pageTitle}
-        apiUrl={reportDB.resolvedApiUrl}
-        apiData={reportDB.resolvedApiData}
-        queryKey={reportDB.resolvedQueryKey}
-        actions={actions}
-        offCanvas={offCanvas}
-        simpleColumns={simpleColumns}
-        cardButton={pageActions}
-      />
-      {reportDB.syncDialog}
-    </>
-  )
-}
+    <CippTablePage
+      title={pageTitle}
+      apiUrl="/api/ListSites?type=SharePointSiteUsage"
+      actions={actions}
+      offCanvas={offCanvas}
+      simpleColumns={[
+        "displayName",
+        "createdDateTime",
+        "ownerPrincipalName",
+        "lastActivityDate",
+        "fileCount",
+        "storageUsedInGigabytes",
+        "storageAllocatedInGigabytes",
+        "reportRefreshDate",
+        "webUrl",
+      ]}
+      cardButton={
+        <>
+          <Button component={Link} href="/teams-share/sharepoint/add-site" startIcon={<Add />}>
+            Add Site
+          </Button>
+          <Button
+            component={Link}
+            href="/teams-share/sharepoint/bulk-add-site"
+            startIcon={<AddToPhotos />}
+          >
+            Bulk Add Sites
+          </Button>
+        </>
+      }
+    />
+  );
+};
 
-Page.getLayout = (page) => <DashboardLayout>{page}</DashboardLayout>
+Page.getLayout = (page) => <DashboardLayout>{page}</DashboardLayout>;
 
-export default Page
+export default Page;

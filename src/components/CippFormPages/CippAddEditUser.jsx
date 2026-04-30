@@ -92,10 +92,7 @@ const CippAddEditUser = (props) => {
   // don't trigger setValue on every keystroke
   const rawGivenName = watcher[0]
   const rawSurname = watcher[1]
-  const [debouncedName, setDebouncedName] = useState({
-    givenName: rawGivenName,
-    surname: rawSurname,
-  })
+  const [debouncedName, setDebouncedName] = useState({ givenName: rawGivenName, surname: rawSurname })
   const debounceRef = useRef(null)
   useEffect(() => {
     debounceRef.current = setTimeout(() => {
@@ -127,22 +124,14 @@ const CippAddEditUser = (props) => {
 
     let username = formatString
 
-    // Replace %FirstName[n]% patterns (extract first n characters per word)
+    // Replace %FirstName[n]% patterns (extract first n characters)
     username = username.replace(/%FirstName\[(\d+)\]%/gi, (match, num) => {
-      const n = parseInt(num)
-      return firstName
-        .split(/\s+/)
-        .map((word) => word.substring(0, n))
-        .join('')
+      return firstName.substring(0, parseInt(num))
     })
 
-    // Replace %LastName[n]% patterns (extract first n characters per word)
+    // Replace %LastName[n]% patterns (extract first n characters)
     username = username.replace(/%LastName\[(\d+)\]%/gi, (match, num) => {
-      const n = parseInt(num)
-      return lastName
-        .split(/\s+/)
-        .map((word) => word.substring(0, n))
-        .join('')
+      return lastName.substring(0, parseInt(num))
     })
 
     // Replace %FirstName% and %LastName%
@@ -231,12 +220,7 @@ const CippAddEditUser = (props) => {
 
   // Reset manual flags and selected template when form is reset (fields become empty)
   useEffect(() => {
-    if (
-      formType === 'add' &&
-      !watchedFields.givenName &&
-      !watchedFields.surname &&
-      !watchedFields.userTemplate
-    ) {
+    if (formType === 'add' && !watchedFields.givenName && !watchedFields.surname && !watchedFields.userTemplate) {
       setDisplayNameManuallySet(false)
       setUsernameManuallySet(false)
       // Only clear selected template if it's not the default template
@@ -244,13 +228,7 @@ const CippAddEditUser = (props) => {
         setSelectedTemplate(null)
       }
     }
-  }, [
-    watchedFields.givenName,
-    watchedFields.surname,
-    watchedFields.userTemplate,
-    formType,
-    selectedTemplate,
-  ])
+  }, [watchedFields.givenName, watchedFields.surname, watchedFields.userTemplate, formType, selectedTemplate])
 
   // Auto-select default template for tenant
   useEffect(() => {
@@ -851,17 +829,6 @@ const CippAddEditUser = (props) => {
             }))}
             creatable={false}
             formControl={formControl}
-            customAction={{
-              icon: <Sync />,
-              tooltip: 'Refresh groups',
-              onClick: () => {
-                tenantGroups.refetch()
-                if (formType === 'edit') {
-                  userGroups.refetch()
-                }
-              },
-              position: 'outside',
-            }}
           />
         </Grid>
       )}

@@ -1,6 +1,6 @@
 [
   {
-    "label": "M365",
+    "label": "M365 Portal",
     "name": "M365_Portal",
     "url": "https://admin.cloud.microsoft/?delegatedOrg=initialDomainName",
     "variable": "initialDomainName",
@@ -9,7 +9,7 @@
     "icon": "GlobeAltIcon"
   },
   {
-    "label": "Exchange",
+    "label": "Exchange Portal",
     "name": "Exchange_Portal",
     "url": "https://admin.cloud.microsoft/exchange?landingpage=homepage&form=mac_sidebar&delegatedOrg=initialDomainName#",
     "variable": "initialDomainName",
@@ -18,7 +18,7 @@
     "icon": "Mail"
   },
   {
-    "label": "Entra",
+    "label": "Entra Portal",
     "name": "Entra_Portal",
     "url": "https://entra.microsoft.com/defaultDomainName",
     "variable": "defaultDomainName",
@@ -27,7 +27,7 @@
     "icon": "UsersIcon"
   },
   {
-    "label": "Teams",
+    "label": "Teams Portal",
     "name": "Teams_Portal",
     "url": "https://admin.teams.microsoft.com/?delegatedOrg=initialDomainName",
     "variable": "initialDomainName",
@@ -36,7 +36,7 @@
     "icon": "FilePresent"
   },
   {
-    "label": "Azure",
+    "label": "Azure Portal",
     "name": "Azure_Portal",
     "url": "https://portal.azure.com/defaultDomainName",
     "variable": "defaultDomainName",
@@ -45,7 +45,7 @@
     "icon": "ServerIcon"
   },
   {
-    "label": "Intune",
+    "label": "Intune Portal",
     "name": "Intune_Portal",
     "url": "https://intune.microsoft.com/defaultDomainName",
     "variable": "defaultDomainName",
@@ -54,7 +54,7 @@
     "icon": "Laptop"
   },
   {
-    "label": "SharePoint",
+    "label": "SharePoint Admin",
     "name": "SharePoint_Admin",
     "url": "/api/ListSharePointAdminUrl?tenantFilter=defaultDomainName",
     "variable": "defaultDomainName",
@@ -63,7 +63,7 @@
     "icon": "Share"
   },
   {
-    "label": "Security",
+    "label": "Security Portal",
     "name": "Security_Portal",
     "url": "https://security.microsoft.com/?tid=customerId",
     "variable": "customerId",
@@ -72,7 +72,7 @@
     "icon": "Shield"
   },
   {
-    "label": "Compliance",
+    "label": "Compliance Portal",
     "name": "Compliance_Portal",
     "url": "https://purview.microsoft.com/?tid=customerId",
     "variable": "customerId",
@@ -81,7 +81,7 @@
     "icon": "ShieldMoon"
   },
   {
-    "label": "Power Platform",
+    "label": "Power Platform Portal",
     "name": "Power_Platform_Portal",
     "url": "https://admin.powerplatform.microsoft.com/account/login/customerId",
     "variable": "customerId",
@@ -90,7 +90,7 @@
     "icon": "PrecisionManufacturing"
   },
   {
-    "label": "Power BI",
+    "label": "Power BI Portal",
     "name": "Power_BI_Portal",
     "url": "https://app.powerbi.com/admin-portal?ctid=customerId",
     "variable": "customerId",

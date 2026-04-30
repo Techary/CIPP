@@ -68,14 +68,14 @@ const CippCalendarPermissionsDialog = ({ formHook, combinedOptions, isUserGroupL
       </Box>
       <Box>
         <Tooltip
-          title={!isEditor ? "Only usable when permission level is Editor" : "Enables delegate access, which forwards meeting requests to this user"}
+          title={!isEditor ? "Only usable when permission level is Editor" : ""}
           followCursor
           placement="right"
         >
           <span>
             <CippFormComponent
               type="switch"
-              label="Delegate with Private item access"
+              label="Can view Private items"
               name="CanViewPrivateItems"
               formControl={formHook}
               disabled={!isEditor}

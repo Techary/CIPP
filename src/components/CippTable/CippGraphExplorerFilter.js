@@ -32,7 +32,6 @@ const CippGraphExplorerFilter = ({
   selectedPreset = null,
   onPresetSelect,
   hideButtons = false,
-  initialValues = null,
 }) => {
   const [offCanvasOpen, setOffCanvasOpen] = useState(false)
   const [cardExpanded, setCardExpanded] = useState(true)
@@ -67,12 +66,6 @@ const CippGraphExplorerFilter = ({
       reportTemplate: null,
     },
   })
-
-  useEffect(() => {
-    if (initialValues && !selectedPreset) {
-      formControl.reset({ ...formControl.getValues(), ...initialValues }, { keepDefaultValues: true })
-    }
-  }, [])
 
   const defaultGraphExplorerTitle = 'Graph Explorer'
 
@@ -524,19 +517,9 @@ const CippGraphExplorerFilter = ({
     if (values.$count === false) {
       delete values.$count
     }
-    if (values.AsApp === false) {
-      delete values.AsApp
-    }
-
-    // Remove non-API fields and null/empty values
-    delete values.name
-    delete values.id
-    delete values.IsShared
-    delete values.reportTemplate
-    delete values.ReverseTenantLookupProperty
 
     Object.keys(values).forEach((key) => {
-      if (values[key] === null || values[key] === '') {
+      if (values[key] === null) {
         delete values[key]
       }
     })
