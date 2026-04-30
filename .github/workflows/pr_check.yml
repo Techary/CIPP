@@ -7,8 +7,8 @@ on:
     types: [opened, synchronize, reopened]
     # Only check PRs targeting these branches
     branches:
-      - main
-      - master
+      #- main
+      #- master
 
 permissions:
   pull-requests: write
