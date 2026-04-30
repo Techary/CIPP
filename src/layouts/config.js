@@ -253,6 +253,11 @@ export const nativeMenuItems = [
             path: '/tenant/conditional/list-named-locations',
             permissions: ['Tenant.ConditionalAccess.*'],
           },
+          {
+            title: 'Authentication Contexts',
+            path: '/tenant/conditional/list-auth-context',
+            permissions: ['Tenant.ConditionalAccess.*'],
+          },
         ],
       },
       {
