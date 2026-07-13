@@ -590,7 +590,7 @@ export const nativeMenuItems = [
       },
       {
         title: 'Device Management',
-        permissions: ['Endpoint.MEM.*'],
+        permissions: ['Endpoint.MEM.*', 'Endpoint.Device.*'],
         items: [
           {
             title: 'Devices',
@@ -826,7 +826,7 @@ export const nativeMenuItems = [
       },
       {
         title: 'Transport',
-        permissions: ['Exchange.TransportRule.*'],
+        permissions: ['Exchange.TransportRule.*', 'Exchange.Connector.*'],
         items: [
           {
             title: 'Transport rules',
@@ -854,7 +854,7 @@ export const nativeMenuItems = [
       },
       {
         title: 'Spamfilter',
-        permissions: ['Exchange.SpamFilter.*'],
+        permissions: ['Exchange.SpamFilter.*', 'Exchange.ConnectionFilter.*'],
         items: [
           {
             title: 'Spamfilter',
@@ -887,7 +887,7 @@ export const nativeMenuItems = [
       },
       {
         title: 'Resource Management',
-        permissions: ['Exchange.Equipment.*'],
+        permissions: ['Exchange.Equipment.*', 'Exchange.Room.*'],
         items: [
           {
             title: 'Equipment',
