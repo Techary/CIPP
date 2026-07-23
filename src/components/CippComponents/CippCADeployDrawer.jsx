@@ -112,7 +112,7 @@ export const CippCADeployDrawer = ({
                 variant="contained"
                 color="primary"
                 onClick={handleSubmit}
-                disabled={deployPolicy.isLoading || blockMultiTenantAuthContext}
+                disabled={deployPolicy.isLoading}
               >
                 {deployPolicy.isLoading
                   ? 'Deploying...'
@@ -224,63 +224,6 @@ export const CippCADeployDrawer = ({
               }
             />
           </CippFormCondition>
-
-          {authContextState.hasAuthContexts && (
-            <>
-              {authContextState.missingIds.length > 0 && (
-                <>
-                  <Alert severity="warning">
-                    This template references authentication contexts but was captured without
-                    metadata (for example, imported from a repo). Provide a display name for each
-                    referenced context so deployment can match it by name in the target tenant.
-                  </Alert>
-                  {authContextState.missingIds.map((id) => (
-                    <Stack
-                      key={id}
-                      spacing={1}
-                      sx={{ pl: 2, borderLeft: "2px solid", borderColor: "divider" }}
-                    >
-                      <Typography variant="subtitle2">Authentication context {id}</Typography>
-                      <CippFormComponent
-                        type="textField"
-                        name={`AuthContextMapping.${id}.displayName`}
-                        label="Display Name *"
-                        formControl={formControl}
-                        validators={{ required: "Display name is required" }}
-                      />
-                      <CippFormComponent
-                        type="textField"
-                        name={`AuthContextMapping.${id}.description`}
-                        label="Description"
-                        multiline
-                        rows={2}
-                        formControl={formControl}
-                      />
-                      <CippFormComponent
-                        type="switch"
-                        name={`AuthContextMapping.${id}.isAvailable`}
-                        label="Publish to apps"
-                        formControl={formControl}
-                      />
-                    </Stack>
-                  ))}
-                </>
-              )}
-              {blockMultiTenantAuthContext && (
-                <Alert severity="error">
-                  Cannot deploy to multiple tenants while the template is missing authentication
-                  context metadata. Deploy to a single tenant and provide the mapping, or recapture
-                  the template from a tenant where the contexts are defined.
-                </Alert>
-              )}
-              <CippFormComponent
-                type="switch"
-                name="CreateAuthContexts"
-                label="Create authentication contexts if they do not exist"
-                formControl={formControl}
-              />
-            </>
-          )}
         </Stack>
       </CippOffCanvas>
     </>
